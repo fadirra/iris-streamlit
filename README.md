@@ -1,6 +1,10 @@
 # Iris Flower Classification Using Streamlit (Fasilkom/Pusilkom UI)
 
-Welcome to the **Iris Flower Classification App**! This interactive web application leverages the power of machine learning to classify Iris flowers based on user input, specifically using a **Random Forest Classifier**. The project is inspired by: https://365datascience.com/blog/authors/santiago-viquez/
+Welcome to the **Iris Flower Classification App**! This interactive web application leverages the power of machine learning to classify Iris flowers based on user input, specifically using a **Random Forest Classifier**. 
+
+A demo of the app running is available at: https://iris-classification-ui.streamlit.app/
+
+Credits: The project is inspired by https://365datascience.com/blog/authors/santiago-viquez/
 
 ## Project Overview
 
