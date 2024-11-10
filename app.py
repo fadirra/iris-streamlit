@@ -1,36 +1,32 @@
-import streamlit as st
+# code inspired by:
+# https://365datascience.com/blog/authors/santiago-viquez/
+
+import streamlit as st # lib for web app interfaces
 import pandas as pd
 import numpy as np
-from prediction import predict
+from prediction import predict # import from a custom module (see prediction.py)
 
+# set title and description
+st.title("Iris Flower Classification by Fasilkom/Pusilkom UI")
+st.markdown("Classify iris flowers based on their sepal/petal length/width.")
 
-st.title('Classifying Iris Flowers')
-st.markdown('Toy model to play to classify iris flowers into \
-     (setosa, versicolor, virginica) based on their sepal/petal \
-    and length/width.')
+st.header("Iris Flower Features")
 
-st.header("Plant Features")
+# create two side-by-side columns for inputting sepal and petal features
 col1, col2 = st.columns(2)
 
 with col1:
     st.text("Sepal characteristics")
-    sepal_l = st.slider('Sepal lenght (cm)', 1.0, 8.0, 0.5)
-    sepal_w = st.slider('Sepal width (cm)', 2.0, 4.4, 0.5)
+    sepal_l = st.slider('Sepal length (cm)', min_value=4.0, max_value=8.0, step=0.1)
+    sepal_w = st.slider('Sepal width (cm)', min_value=2.0, max_value=5.0, step=0.1)
 
 with col2:
-    st.text("Pepal characteristics")
-    petal_l = st.slider('Petal lenght (cm)', 1.0, 7.0, 0.5)
-    petal_w = st.slider('Petal width (cm)', 0.1, 2.5, 0.5)
+    st.text("Petal characteristics")
+    petal_l = st.slider('Petal length (cm)', min_value=1.0, max_value=7.0, step=0.1)
+    petal_w = st.slider('Petal width (cm)', min_value=0.1, max_value=3.0, step=0.1)
 
+# set UI for class prediction
 st.text('')
-if st.button("Predict type of Iris"):
-    result = predict(
-        np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
-    st.text(result[0])
-
-
-st.text('')
-st.text('')
-st.markdown(
-    '`Create by` [santiviquez](https://twitter.com/santiviquez) | \
-         `Code:` [GitHub](https://github.com/santiviquez/iris-streamlit)')
+if st.button("Predict class"):
+    result = predict(np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
+    st.success(f"Result: {result[0]}")
